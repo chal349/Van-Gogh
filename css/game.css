@@ -1,0 +1,90 @@
+.choice-container {
+    display: flex;
+    margin-bottom: 1rem;
+    width: 100%;
+    font-size: 1.8rem;
+    border: 0.5rem solid rgba(232, 232, 232);
+    background-color: rgb(232, 232, 232);
+  }
+  
+  .choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(0, 0, 0, 0.5);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+  }
+  
+  .choice-prefix {
+    padding: 1.5rem 2rem;
+    background-color: #393939;
+    color: rgb(232, 232, 232);
+  }
+  
+  .choice-text {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .correct {
+    background-color: #58fa83;
+    border-color: #58fa83;
+  }
+
+  .incorrect {
+    background-color: #dc5f35;
+    border-color: #dc5f35;
+;
+  }
+
+  /* HUD */
+  #hud {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hud-prefix {
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(232, 232, 232);;
+  }
+
+  .hud-main-text {
+    text-align: center;
+  }
+
+  .progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6rem;
+  }
+
+  #progressBar {
+    width: 100vw;
+    height: 5rem;
+    border: .4rem solid #58fa83;
+  }
+
+  #progressBarFull {
+    height: 4.6rem;
+    background-color: #58fa83;
+  }
+
+  /* LOADER */
+#loader {
+  border: 1.6rem solid rgb(230, 228, 228);
+  border-radius: 50%;
+  border-top: 1.6rem solid #58fa83;
+  width: 12rem;
+  height: 12rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
