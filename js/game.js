@@ -14,6 +14,11 @@ let availableQuestions = [];
 
 let questions = [];
 
+//Constants
+const CORRECT_BONUS = 10;
+const MAX_QUESTIONS = 5;
+
+//FETCH API
 fetch('https://opentdb.com/api.php?amount=10&category=25&type=multiple'
 )
     .then( res => {
@@ -46,10 +51,7 @@ fetch('https://opentdb.com/api.php?amount=10&category=25&type=multiple'
         console.error(err);
     });
 
-//Constants
-const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 5;
-
+//START GAME FUNCTION
 startGame = () => {
     questionCounter = 0;
     score = 0;
@@ -59,15 +61,16 @@ startGame = () => {
     loader.classList.add('hidden');
 };
 
+//NEXT QUESTION
 getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score);
         //go to the end page
         return window.location.assign("end.html");
     }
-
     questionCounter++;
     questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+    
     //Update the progress bar
     progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
@@ -81,11 +84,10 @@ getNewQuestion = () => {
     });
 
     availableQuestions.splice(questionIndex, 1);
-
     acceptingAnswers = true;
 };
 
-
+//ANSWER CHOICE CLICK EVENT
 choices.forEach(choice => {
     choice.addEventListener("click", e => {
         if(!acceptingAnswers) return;
@@ -108,6 +110,7 @@ choices.forEach(choice => {
     });
 });
 
+//CALCULATE SCORE
 incrementScore = num => {
     score += num;
     scoreText.innerText = score;
